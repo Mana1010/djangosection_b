@@ -9,15 +9,22 @@ class Gender(models.Model):
    
    class Meta:
        db_table = "genders"
-
+       
+   def __str__(self):
+    return self.gender
+    
 class User(models.Model):
-    user_id = models.BigAutoField(primary_key=True, blank=False)
-    first_name = models.CharField(max_length=55, blank=False)
-    middle_name = models.CharField(max_length=55, blank=True)
-    last_name = models.CharField(max_length=55, blank=False)
+    user_id = models.BigAutoField(primary_key=True, blank=False) # BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY
+    first_name = models.CharField(max_length=55, blank=False) # VARCHAR(55) NOT NULL
+    middle_name = models.CharField(max_length=55, blank=True) # VARCHAR(55) DEFAULT NULL
+    last_name = models.CharField(max_length=55, blank=False) # VARCHAR(55) NOT NULL
+    age = models.IntegerField(blank=False) # INT NOT NULL
+    birth_date = models.DateField(blank=False) # DATE NOT NULL
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
+    username = models.CharField(max_length=55, blank=False)
+    password = models.CharField(max_length=255, blank=False)
+    date_created = models.DateTimeField(auto_now_add=True) # TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    date_updated = models.DateTimeField(auto_now=True) # TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     
     class Meta:
         db_table = "users"

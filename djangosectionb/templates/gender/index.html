@@ -1,2 +1,55 @@
-{% extends "layout/base.html" %} {% block title %} List of Gender | Django CRUD
-APP {% endblock title %} {%block%}{%endlock%}
+{% extends "layout/base.html" %} {% comment %} Commentssssddsd {% endcomment %}
+{% block title %}List{% endblock title %} {% block content %} {% comment %}
+Commentssssddsd {% endcomment %} {% include "include/navbar.html" %}
+<div class="d-flex w-100 justify-content-end p-2">
+  <a href="/gender/create" class="btn btn-primary float-end mt-1 me-1"
+    >Add Gender</a
+  >
+</div>
+{% include "include/messages.html" %}
+<div class="col-md-6 mx-auto">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Gender ID</th>
+          <th>Gender</th>
+          <th>Date Created</th>
+          <th>Date Updated</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for gender in genders %}
+        <tr>
+          <td>{{ gender.gender_id }}</td>
+          <td>{{ gender.gender }}</td>
+          <td>{{ gender.date_created }}</td>
+          <td>{{ gender.date_updated }}</td>
+          <td>
+            <div class="btn-group">
+              <a
+                href="/gender/show/{{ gender.gender_id }}"
+                class="btn btn-primary m-1"
+                >View</a
+              >
+              <a
+                href="/gender/edit/{{ gender.gender_id }}"
+                class="btn btn-success m-1"
+                >Edit</a
+              >
+              <a
+                href="/gender/delete/{{ gender.gender_id }}"
+                class="btn btn-danger m-1"
+                >Delete</a
+              >
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock content %}
