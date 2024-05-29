@@ -1,11 +1,10 @@
 {% extends "layout/base.html" %} {% comment %} Stop the error {% endcomment %}
 {% block title %} Create User {% endblock title %} {% block content %}
 <div>
-  {% include "include/messages.html" %}
-  <div class="col-md-4 mx-auto py-2">
-    <h1 class="lead text-primary text-center">REGISTER</h1>
-    <form action="/user/store" method="post">
-      {% csrf_token %}
+  <div class="col-md-4 mx-auto mt-2 py-2">
+    <h1 class="text-primary lead text-center">USER DETAILS</h1>
+    <form method="post">
+      {% comment %} {% csrf_token %} {% endcomment %}
       <div class="mb-3">
         <label for="first_name">First Name</label>
         <input
@@ -13,7 +12,8 @@
           class="form-control"
           id="first_name"
           name="first_name"
-          required
+          value="{{user.first_name}}"
+          readonly
         />
       </div>
       <div class="mb-3">
@@ -23,6 +23,8 @@
           class="form-control"
           id="middle_name"
           name="middle_name"
+          value="{{user.middle_name}}"
+          readonly
         />
       </div>
       <div class="mb-3">
@@ -32,70 +34,58 @@
           class="form-control"
           id="last_name"
           name="last_name"
-          required
+          value="{{user.last_name}}"
+          readonly
         />
       </div>
       <div class="mb-3">
         <label for="age">Age</label>
         <input
-          type="number"
+          type="text"
           class="form-control"
           id="age"
           name="age"
-          min="1"
-          max="150"
-          required
+          value="{{user.age}}"
+          readonly
         />
       </div>
       <div class="mb-3">
         <label for="birth_date">Birth Date</label>
         <input
-          type="date"
+          type="text"
           class="form-control"
           id="birth_date"
           name="birth_date"
-          required
+          value="{{ user.birth_date }}"
+          readonly
         />
       </div>
       <div class="mb-3">
-        <label for="gender_id">Gender</label>
-        <select name="gender_id" id="gender_id" class="form-select" required>
-          <option value="">N/A</option>
-          {% for gender in genders %}
-          <option value="{{ gender.gender_id }}">{{ gender.gender }}</option>
-          {% endfor %}
-        </select>
+        <label for="gender">Gender</label>
+        <input
+          type="text"
+          class="form-control"
+          id="gender"
+          name="gender"
+          value="{{ user.gender }}"
+          readonly
+        />
       </div>
       <div class="mb-3">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" />
-      </div>
-      <div class="mb-3">
-        <label for="password">Password</label>
         <input
-          type="password"
+          type="text"
           class="form-control"
-          id="password"
-          name="password"
+          id="username"
+          name="username"
+          value="{{user.username}}"
+          readonly
         />
       </div>
-      <div class="mb-3">
-        <label for="confirm_password">Confirm Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="confirm_password"
-          name="confirm_password"
-        />
-      </div>
-      <div class="d-flex justify-content-center btn-group">
-        <button
-          type="submit"
-          class="btn btn-success float-end col-12 col-md-5 m-1"
-        >
-          Save Gender
-        </button>
-        <a href="/users" class="btn btn-secondary float-end col-12 col-md-5 m-1"
+      <div class="d-flex justify-content-center w-100">
+        <a
+          href="/users"
+          class="btn btn-secondary float-end col-12 col-md-6 me-1"
           >Back</a
         >
       </div>

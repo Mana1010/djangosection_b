@@ -28,3 +28,7 @@ class User(models.Model):
     
     class Meta:
         db_table = "users"
+        verbose_name_plural = "Users"
+    
+    # def __str__(self):
+    #     return self.first_name, self.middle_name, self.last_name, self.age, self.birth_date, self.gender, self.username, self.password, self.date_created, self.date_updated

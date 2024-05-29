@@ -8,7 +8,34 @@
     <title>{% block title%}{%endblock title%} | Django CRUD App</title>
   </head>
   <body>
-    {% block content %} {% endblock content %}
+    {% block content %}
+    <div
+      class="d-flex justify-content-center flex-column m-5 align-items-center"
+    >
+      <div>
+        <h1 class="display-5 text-primary text-center">
+          SIMPLE CRUD APPLICATION
+        </h1>
+        <h4 class="lead text-center">
+          USING DJANGO'S TEMPLATE, DJANGO AND MYSQL
+        </h4>
+        <div class="pt-2">
+          <h5>CONTRIBUTORS:</h5>
+          <p>DEVELOPER AND LEADER: TRISTAN VIC T. CLARITO</p>
+          <p>SUB-DEVELOPER: GOLDWYN GOMEZ</p>
+          <p>TESTER: JULES CHRISTIAN TUMANON</p>
+          <p>ANALYST: OSHIE MIKOMI SATO</p>
+        </div>
+        <div class="w-100 d-flex justify-content-center">
+          <a
+            href="/users"
+            class="col-12 col-md-6 bg-primary p-2 text-white rounded-2 text-center"
+            >GET STARTED</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
   </body>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </html>

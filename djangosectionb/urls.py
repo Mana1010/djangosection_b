@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path("", views.base),
     path('genders', views.index_gender),
     path('gender/create', views.create_gender),
     path('gender/store', views.store_gender),
@@ -13,4 +14,9 @@ urlpatterns = [
     path('users', views.index_user),
     path('user/create', views.create_user),
     path('user/store', views.store_user),
+    path('user/delete/<int:user_id>', views.delete_user),
+    path('user/destroy/<int:user_id>', views.destroy_user),
+    path('user/show/<int:user_id>', views.show_user),
+    path('user/edit/<int:user_id>', views.edit_user),
+    path('user/update/<int:user_id>', views.update_user),
 ]

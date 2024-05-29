@@ -2,12 +2,12 @@
 {% block title %} Delete User {% endblock title %} {% block content %}
 <div class="d-flex w-100 justify-content-center align-items-center flex-column">
   <h1>Delete User</h1>
-  <p>Are you sure do you want to delete this "{{ gender.gender }}"</p>
+  <p>Are you sure do you want to delete this user: "{{ user.username }}"</p>
 
-  <form action="/gender/destroy/{{ gender.gender_id }}" method="post">
+  <form action="/user/destroy/{{ user.user_id }}" method="post">
     {% csrf_token %}
     <button type="submit" class="btn btn-danger float-end">Yes</button>
-    <a href="/genders" class="btn btn-secondary float-end">No</a>
+    <a href="/users" class="btn btn-secondary float-end">No</a>
   </form>
 </div>
 {% endblock content %}

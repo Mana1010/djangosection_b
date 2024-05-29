@@ -1,3 +1,10 @@
-{% for message in messages %}
-<div class="alert alert-success" role="alert">{{ message }}</div>
-{% endfor %}
+{% for message in messages %} {% comment %} commentdddddddddd {% endcomment %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<div class="alert alert-success" role="alert">{{ message.message }}</div>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<div class="alert alert-warning" role="alert">{{ message.message }}</div>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<div class="alert alert-danger" role="alert">{{ message.message }}</div>
+{% else %}
+<div class="alert alert-info" role="alert">{{ message.message }}</div>
+{% endif %} {% endfor %}

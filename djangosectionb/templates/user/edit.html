@@ -1,10 +1,9 @@
 {% extends "layout/base.html" %} {% comment %} Stop the error {% endcomment %}
 {% block title %} Create User {% endblock title %} {% block content %}
 <div>
-  {% include "include/messages.html" %}
   <div class="col-md-4 mx-auto py-2">
-    <h1 class="lead text-primary text-center">REGISTER</h1>
-    <form action="/user/store" method="post">
+    <h1 class="lead text-primary text-center">EDIT USER</h1>
+    <form action="/user/update/{{ user.user_id }}" method="post">
       {% csrf_token %}
       <div class="mb-3">
         <label for="first_name">First Name</label>
@@ -13,6 +12,7 @@
           class="form-control"
           id="first_name"
           name="first_name"
+          value="{{user.first_name}}"
           required
         />
       </div>
@@ -23,6 +23,7 @@
           class="form-control"
           id="middle_name"
           name="middle_name"
+          value="{{user.middle_name}}"
         />
       </div>
       <div class="mb-3">
@@ -32,6 +33,7 @@
           class="form-control"
           id="last_name"
           name="last_name"
+          value="{{user.last_name}}"
           required
         />
       </div>
@@ -44,6 +46,7 @@
           name="age"
           min="1"
           max="150"
+          value="{{user.age}}"
           required
         />
       </div>
@@ -54,50 +57,44 @@
           class="form-control"
           id="birth_date"
           name="birth_date"
+          value="{{ user.birth_date }}"
           required
         />
       </div>
       <div class="mb-3">
-        <label for="gender_id">Gender</label>
-        <select name="gender_id" id="gender_id" class="form-select" required>
-          <option value="">N/A</option>
-          {% for gender in genders %}
-          <option value="{{ gender.gender_id }}">{{ gender.gender }}</option>
-          {% endfor %}
-        </select>
+        <label for="gender">Gender</label>
+        <input
+          type="text"
+          class="form-control"
+          id="gender"
+          name="gender"
+          value="{{ user.gender }}"
+          required
+        />
       </div>
       <div class="mb-3">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" />
-      </div>
-      <div class="mb-3">
-        <label for="password">Password</label>
         <input
-          type="password"
+          type="text"
           class="form-control"
-          id="password"
-          name="password"
+          id="username"
+          name="username"
+          value="{{user.username}}"
+          required
         />
       </div>
-      <div class="mb-3">
-        <label for="confirm_password">Confirm Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="confirm_password"
-          name="confirm_password"
-        />
-      </div>
-      <div class="d-flex justify-content-center btn-group">
-        <button
-          type="submit"
-          class="btn btn-success float-end col-12 col-md-5 m-1"
-        >
-          Save Gender
-        </button>
-        <a href="/users" class="btn btn-secondary float-end col-12 col-md-5 m-1"
+      <div class="d-flex w-100 row btn-group justify-content-center">
+        <a
+          href="/users"
+          class="btn btn-secondary float-end col-12 col-md-5 me-1 mx-md-1 my-1"
           >Back</a
         >
+        <button
+          type="submit"
+          class="btn float-end col-12 col-md-5 me-1 btn-primary mx-md-1 my-1"
+        >
+          Edit
+        </button>
       </div>
     </form>
   </div>
